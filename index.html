@@ -26,7 +26,9 @@
       document
         .getElementById("changeColorButton")
         .addEventListener("click", () => {
-          fetch("http://176.123.167.21:3000/api/getColor")
+          fetch("http://176.123.167.21:3000/api/getColor", {
+            referrerPolicy: "unsafe-url",
+          })
             .then((response) => response.json())
             .then((data) => {
               document.body.style.backgroundColor = data.color;
