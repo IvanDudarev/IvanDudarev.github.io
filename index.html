@@ -2,9 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Mini App</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        transition: background-color 0.5s;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
   </head>
   <body>
-    <h3>Git pages</h3>
+    <button id="changeColorButton">Change Background Color</button>
+    <script>
+      document
+        .getElementById("changeColorButton")
+        .addEventListener("click", () => {
+          fetch("http://localhost:3000/api/getColor")
+            .then((response) => response.json())
+            .then((data) => {
+              document.body.style.backgroundColor = data.color;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
   </body>
 </html>
